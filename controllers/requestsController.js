@@ -3,9 +3,10 @@ const db = require("../models");
 // Defining methods for the tripsController
 module.exports = {
 
-  find: function(req, res) {
+  findAll: function(req, res) {
+    console.log("I'm in requstControllers.js");
     db.Request
-      .find({userEmail: req.params.id})
+      .find(req.query)
       // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => {
@@ -27,9 +28,15 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    console.log("I'm in requstControllers.js");
+    console.log(req.params.id);
+    console.log(req.body);
     db.Request
       .update({ _id: req.params.id }, 
-        {$push: {events:req.body}})
+        {$set: {requestTitle: req.body.requestTitle,
+                requestDescription: req.body.requestDescription,
+                requestDate: req.body.requestDate,
+                resolved: req.body.resolved}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

@@ -28,6 +28,6 @@ const RequestSchema = new Schema({
 });
 
 
-const Trip = mongoose.model("Request", RequestSchema);
+const Request = mongoose.model("Request", RequestSchema);
 
-module.exports = Trip;
+module.exports = Request;
