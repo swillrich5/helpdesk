@@ -27,6 +27,8 @@ const Home = () => {
             requestDescription: description,
             requestUsername: username,
             requestPriority: priority,
+            requestDate: new Date(),
+            resolved: false
         })
         .then(res => {
             console.log("Request Created");
