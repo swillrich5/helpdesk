@@ -27,3 +27,8 @@ code {
   font-family: 'Gloria Hallelujah', 'Acme', sans-serif;
   font-weight: bolder;
 }
+
+.requestTitle:hover {
+  color: red;
+  text-decoration: none;
+}

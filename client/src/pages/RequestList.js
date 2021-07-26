@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Heading from '../components/Heading';
 import API from '../utils/API';
-import Requests from '../components/Requests';
-
 
 const RequestList = () => {
 
@@ -40,12 +38,13 @@ const RequestList = () => {
                 </thead>
                 <tbody>
                     {(!loading) && requests.map(request =>
+
                             <tr key={ request._id }>
-                                <td>{ request.requestTitle }</td>
-                                <td>{ request.requestUsername }</td>
-                                <td>{ request.requestPriority }</td>
-                                <td>{request.requestDate}</td>
-                                <td>{(request.resolved === true) ? <span>Closed</span> : <span>Open</span>}</td>
+                                    <td><Link to={`/editRequest/${request._id}`} className="requestTitle">{ request.requestTitle }</Link></td>
+                                    <td>{ request.requestUsername }</td>
+                                    <td>{ request.requestPriority }</td>
+                                    <td>{request.requestDate}</td>
+                                    <td>{(request.resolved === true) ? <span>Closed</span> : <span>Open</span>}</td>
                             </tr>
                     )}
                 </tbody>
