@@ -21,7 +21,7 @@ export default {
     return axios.post("/api/requests", requestData);
   },
     // Updates a request to the database
-  updateRequest: function(id, tripData) {
-    return axios.put(("/api/trips/" + id), tripData);
+  updateRequest: function(id, requestData) {
+    return axios.put(("/api/requests/" + id), requestData);
   }
 };

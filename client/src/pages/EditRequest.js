@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Heading from '../components/Heading';
 import API from '../utils/API';
+import { Link } from 'react-router-dom';
 
 const EditRequest = ({ match }) => {
 
@@ -23,39 +24,56 @@ const EditRequest = ({ match }) => {
             .catch(err => console.log(err));
 }, [match]);
 
-    function handleSubmit() {
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    API.updateRequest(request._id, request)
+    .then(res => {
+        console.log("Request Updated");
+        console.log("Request ====>");
+        console.log(request);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+    setMessageOne("Your request has been updated");
+    const timer = setTimeout(() => {
+        setMessageOne("");
+    }, 3000 );
+    return () => clearTimeout(timer);
 
     }
 
     function requestTitleChange (e) {
-        const { name, value } = e.target;
+        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
-            [name]: value
+            requestTitle: e.target.value
         }))
     }
 
     function usernameChange (e) {
-        const { name, value } = e.target;
+        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
-            [name]: value
+            requestUsername: e.target.value
         }))
     }
 
     function priorityChange (e) {
-        const { name, value } = e.target;
+        console.log(e.target);
         setRequest(prevState => ({
             ...prevState,
-            [name]: value
+            requestPriority: e.target.value
         }))
     }
 
     function descriptionChange (e) {
-        const { name, value } = e.target;
+        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
-            [name]: value
+            requestDescription: e.target.value
         }))
     }
 

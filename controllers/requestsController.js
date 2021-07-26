@@ -21,24 +21,20 @@ module.exports = {
   },
   create: function(req, res) {
     console.log("I'm in requestControllers.js - create");
-    console.log(req.body);
+    console.log(req.body.requestTitle);
     db.Request
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    console.log("I'm in requstControllers.js");
-    console.log(req.params.id);
+    console.log("I'm in requesstControllers.js - UPDATE");
+    console.log("req.params.id = " + req.params.id);
     console.log(req.body);
     db.Request
-      .update({ _id: req.params.id }, 
-        {$set: {requestTitle: req.body.requestTitle,
-                requestDescription: req.body.requestDescription,
-                requestDate: req.body.requestDate,
-                resolved: req.body.resolved}})
+      .findOneAndUpdate({_id: req.params.id} , req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(488).json(err));
   },
   remove: function(req, res) {
     db.Request
