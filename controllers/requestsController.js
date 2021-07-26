@@ -21,6 +21,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("I'm in requestControllers.js - create");
     console.log(req.body);
     db.Request
       .create(req.body)

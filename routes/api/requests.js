@@ -2,18 +2,17 @@ const router = require("express").Router();
 const requestsController = require("../../controllers/requestsController");
 
 
+console.log("I'm in requests.js");
+
 // Matches with "/api/requests"
 router.route("/")
   .get(requestsController.findAll)
   .post(requestsController.create);
 
-// Matches with "/api/trips/:id"
-router
-  .route("/:id")
+// Matches with "/api/requests/:id"
+router.route("/:id")
   .get(requestsController.findById)
   .put(requestsController.update)
   .delete(requestsController.remove);
-
-
 
 module.exports = router;

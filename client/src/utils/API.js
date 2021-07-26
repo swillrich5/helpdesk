@@ -16,10 +16,12 @@ export default {
   },
   // Saves a request to the database
   saveRequest: function(requestData) {
-    return axios.post("/api/books", requestData);
+    console.log("I'm in API.js - saveRequest()");
+    console.log(requestData);
+    return axios.post("/api/requests", requestData);
   },
-      // Updates a request to the database
-      updateTrip: function(id, tripData) {
-        return axios.put(("/api/trips/" + id), tripData);
-    }
+    // Updates a request to the database
+  updateRequest: function(id, tripData) {
+    return axios.put(("/api/trips/" + id), tripData);
+  }
 };

@@ -13,6 +13,16 @@ const RequestSchema = new Schema({
         trim: true,
         required: false
     },
+    requestUsername: {
+        type: String,
+        trim: true,
+        required: false
+    },
+    requestPriority: {
+        type: String,
+        trim: true,
+        required: false
+    },
     requestDate: {
         type: Date,
         required: true
