@@ -8,12 +8,12 @@ const Home = () => {
             <div className="container px-5">
                 <form className="text-primary col-8 mx-auto mt-5">
                     <div className="form-group">
-                        <label className="lead" htmlFor="exampleFormControlInput1">Title</label>
+                        <label className="lead font-weight-bold" htmlFor="exampleFormControlInput1">Title</label>
                         <input type="text" className="form-control" id="request-title" placeholder="I need help..." />
                     </div>
                     <div className="row ml-1">
                         <div className="form-group col-xs-5 mr-5">
-                            <label className="lead" htmlFor="username">Name</label>
+                            <label className="lead font-weight-bold" htmlFor="username">Name</label>
                             <select className="form-control" id="username">
                                 <option>Cheryl</option>
                                 <option>Truman</option>
@@ -23,7 +23,7 @@ const Home = () => {
                             </select>
                         </div>
                         <div className="form-group col-xs-5">
-                            <label className="lead" htmlFor="priority">Priority</label>
+                            <label className="lead font-weight-bold" htmlFor="priority">Priority</label>
                             <select className="form-control" id="priority">
                                 <option>High</option>
                                 <option>Medium</option>
@@ -34,8 +34,11 @@ const Home = () => {
                     </div>
 
                     <div className="form-group">
-                        <label className="lead" htmlFor="Description">Description</label>
+                        <label className="lead font-weight-bold" htmlFor="Description">Description</label>
                         <textarea className="form-control" id="request-description" rows="5"></textarea>
+                    </div>
+                    <div className="row ml-1">
+                        <button type="submit" className="btn btn-primary btn-lg px-5 font-weight-bold">Submit</button>
                     </div>
                 </form>
             </div>
