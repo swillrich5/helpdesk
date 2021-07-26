@@ -1,9 +1,15 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="justify-content-center">
-      <h1 className="text-center my-5">Scott's Helpdesk</h1>
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path='/' component={Home}/>
+      </Switch>
+    </Router>
   );
 }
 
