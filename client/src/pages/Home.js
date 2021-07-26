@@ -16,13 +16,17 @@ const Home = () => {
             requestDescription: description,
             requestUsername: username,
             requestPriority: priority,
-            requestDate: new Date(),
-            resolved: false
+            // requestDate: new Date(),
+            // resolved: false
         })
         .then(res => {
             console.log("it worked");
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            console.log("What the fuck!")
+            console.log(err);
+            console.log("What the fuck!")
+        });
     }
 
     function requestTitleChange (e) {

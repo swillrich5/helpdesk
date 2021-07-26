@@ -1,8 +1,7 @@
 const db = require("../models");
 
-// Defining methods for the tripsController
+// Defining methods for the requestsController
 module.exports = {
-
   findAll: function(req, res) {
     console.log("I'm in requstControllers.js");
     db.Request
@@ -26,6 +25,9 @@ module.exports = {
     db.Request
       .create(req.body)
       .then(dbModel => res.json(dbModel))
+      .then(res => {
+        console.log("create");
+      })
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {

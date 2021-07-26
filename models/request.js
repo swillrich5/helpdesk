@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
-const RequestSchema = new Schema({
+const requestSchema = new Schema({
     requestTitle: {
         type: String,
         trim: true,
@@ -25,7 +24,7 @@ const RequestSchema = new Schema({
     },
     requestDate: {
         type: Date,
-        required: true
+        required: false
     },
     requestResolveDate: {
         type: Date,
@@ -38,6 +37,6 @@ const RequestSchema = new Schema({
 });
 
 
-const Request = mongoose.model("Request", RequestSchema);
+const Request = mongoose.model("Request", requestSchema);
 
 module.exports = Request;

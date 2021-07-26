@@ -2,7 +2,7 @@ const router = require("express").Router();
 const requestsController = require("../../controllers/requestsController");
 
 
-console.log("I'm in requests.js");
+// console.log("I'm in requests.js");
 
 // Matches with "/api/requests"
 router.route("/")
@@ -13,6 +13,8 @@ router.route("/")
 router.route("/:id")
   .get(requestsController.findById)
   .put(requestsController.update)
-  .delete(requestsController.remove);
+  .delete(requestsController.remove)
+  .post(requestsController.create);
+
 
 module.exports = router;
