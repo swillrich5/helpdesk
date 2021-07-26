@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import RequestList from './pages/RequestList';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path='/' component={Home}/>
+        <Route exact path='/requestList' component={RequestList}/>
       </Switch>
     </Router>
   );
