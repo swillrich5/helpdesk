@@ -22,3 +22,8 @@ code {
   max-height: 50px;
   max-width: 50px;
 }
+
+.acme {
+  font-family: 'Gloria Hallelujah', 'Acme', sans-serif;
+  font-weight: bolder;
+}
