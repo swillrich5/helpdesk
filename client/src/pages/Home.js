@@ -29,12 +29,10 @@ const Home = () => {
             requestPriority: priority,
         })
         .then(res => {
-            console.log("it worked");
+            console.log("Request Created");
         })
         .catch(err => {
-            console.log("What the fuck!")
             console.log(err);
-            console.log("What the fuck!")
         });
 
         setMessageOne("Your request has been logged");
