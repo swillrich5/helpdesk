@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Heading from '../components/Heading';
 import API from '../utils/API';
-import { Link } from 'react-router-dom';
 
 const EditRequest = ({ match }) => {
 
@@ -77,6 +76,14 @@ const handleSubmit = (e) => {
         }))
     }
 
+    function statusChange (e) {
+        console.log(e.target.value);
+        setRequest(prevState => ({
+            ...prevState,
+            resolved: e.target.value
+        }))
+    }
+
     return (
         <div>
             <Heading />
@@ -88,7 +95,7 @@ const handleSubmit = (e) => {
                         <input type="text" name="requestTitle" value={ request.requestTitle } onChange={(e) => requestTitleChange(e)} className="form-control" id="request-title" placeholder="I need help..." />
                     </div>
                     <div className="row ml-1">
-                        <div className="form-group col-xs-5 mr-5">
+                        <div className="form-group col-xs-5 mr-3">
                             <label className="lead font-weight-bold" htmlFor="username">Name</label>
                             <select className="form-control" id="username" name="requestUsername" onChange={(e) => usernameChange(e)} value={ request.requestUsername } >
                                 <option value="Cheryl">Cheryl</option>
@@ -105,6 +112,13 @@ const handleSubmit = (e) => {
                                 <option>Medium</option>
                                 <option>Low </option>
                                 <option>When you can get to it</option>
+                            </select>
+                        </div>
+                        <div className="form-group col-xs-5 ml-3">
+                            <label className="lead font-weight-bold" htmlFor="resolved" >Status</label>
+                            <select className="form-control" id="resolved" name="resolved" value={request.resolved} onChange={(e) => statusChange(e)} >
+                                <option value={false}>Open</option>
+                                <option value={true}>Closed</option>
                             </select>
                         </div>
                     </div>
