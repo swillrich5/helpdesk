@@ -33,6 +33,7 @@ const RequestList = () => {
                         <th scope="col-2" className="font-weight-bold lead">Requestor</th>
                         <th scope="col-2" className="font-weight-bold lead">Priority</th>
                         <th scope="col-2" className="font-weight-bold lead">Request Date</th>
+                        <th scope="col-2" className="font-weight-bold lead">Assigned To</th>
                         <th scope="col-2" className="font-weight-bold lead">Status</th>
                     </tr>
                 </thead>
@@ -44,6 +45,7 @@ const RequestList = () => {
                                     <td>{ request.requestUsername }</td>
                                     <td>{ request.requestPriority }</td>
                                     <td>{request.requestDate}</td>
+                                    <td>{request.assignedTo}</td>
                                     <td>{(request.resolved === true) ? <span>Closed</span> : <span>Open</span>}</td>
                             </tr>
                     )}
