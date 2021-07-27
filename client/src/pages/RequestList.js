@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Heading from '../components/Heading';
 import API from '../utils/API';
 import Spinner from '../components/Spinner';
+import moment from 'moment';
 
 const RequestList = () => {
 
@@ -58,7 +59,7 @@ const RequestList = () => {
                                             <td><Link to={`/editRequest/${request._id}`} className="requestTitle">{ request.requestTitle }</Link></td>
                                             <td>{ request.requestUsername }</td>
                                             <td>{ request.requestPriority }</td>
-                                            <td>{request.requestDate}</td>
+                                            <td>{moment(request.requestDate).format('MM-DD-YYYY h:mma')}</td>
                                             <td>{request.assignedTo}</td>
                                             <td>{(request.resolved === true) ? <span>Closed</span> : <span>Open</span>}</td>
                                     </tr> )
