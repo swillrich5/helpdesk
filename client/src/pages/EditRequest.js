@@ -76,6 +76,13 @@ const handleSubmit = (e) => {
         }))
     }
 
+    function assignedToChange (e) {
+        console.log(e.target.value);
+        setRequest(prevState => ({
+            ...prevState,
+            assignedTo: e.target.value
+        }))
+    }
     function statusChange (e) {
         console.log(e.target.value);
         setRequest(prevState => ({
@@ -115,14 +122,22 @@ const handleSubmit = (e) => {
                             </select>
                         </div>
                         <div className="form-group col-xs-5 ml-3">
+                            <label className="lead font-weight-bold" htmlFor="assignedTo" >Assigned To</label>
+                            <select className="form-control" id="assignedTo" name="assignedTo" value={request.assignedTo} onChange={(e) => assignedToChange(e)} >
+                                <option value="Scott">Unassigned</option>                                
+                                <option value="Scott">Scott</option>
+                                <option value="Chico">Chico</option>
+                                <option value="Charlie">Charlie</option>
+                            </select>
+                        </div>
+                        <div className="form-group col-xs-5 ml-3">
                             <label className="lead font-weight-bold" htmlFor="resolved" >Status</label>
                             <select className="form-control" id="resolved" name="resolved" value={request.resolved} onChange={(e) => statusChange(e)} >
                                 <option value={false}>Open</option>
                                 <option value={true}>Closed</option>
                             </select>
-                        </div>
+                        </div>                    
                     </div>
-
                     <div className="form-group">
                         <label className="lead font-weight-bold" htmlFor="Description">Description</label>
                         <textarea className="form-control" id="request-description" rows="5" name="requestDescription" value={ request.requestDescription } onChange={(e) => descriptionChange(e)}></textarea>

@@ -26,6 +26,10 @@ const RequestSchema = new Schema({
         type: Date,
         required: false
     },
+    assignedTo: {
+        type: String,
+        required: false
+    },
     requestResolveDate: {
         type: Date,
         required: false
