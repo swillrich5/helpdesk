@@ -28,6 +28,7 @@ const Home = () => {
             requestUsername: username,
             requestPriority: priority,
             requestDate: new Date(),
+            assignedTo: "Unassigned",
             resolved: false
         })
         .then(res => {

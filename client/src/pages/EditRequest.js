@@ -124,7 +124,7 @@ const handleSubmit = (e) => {
                         <div className="form-group col-xs-5 ml-3">
                             <label className="lead font-weight-bold" htmlFor="assignedTo" >Assigned To</label>
                             <select className="form-control" id="assignedTo" name="assignedTo" value={request.assignedTo} onChange={(e) => assignedToChange(e)} >
-                                <option value="Scott">Unassigned</option>                                
+                                <option value="Unassigned">Unassigned</option>                                
                                 <option value="Scott">Scott</option>
                                 <option value="Chico">Chico</option>
                                 <option value="Charlie">Charlie</option>
