@@ -10,8 +10,8 @@ const RequestList = () => {
     const [loading, setLoading] = useState(false);
     const [requests, setRequests] = useState([]);
     const [showOpen, setShowOpen] = useState(false);
-    const [titleSortedAscending, setTitleSortedAscending] = useState(false);
-
+    const [titleSortedAscending, setTitleSortedAscending] = useState();
+    const [usernameSortedAscending, setUsernameSortedAscending] = useState();
 
     useEffect(() => {
         console.log("Hello from RequestList.js useEffect");
@@ -31,32 +31,48 @@ const RequestList = () => {
 
     }
 
+    const resetSortVariables = () => {
+        setTitleSortedAscending(false);
+        setUsernameSortedAscending(false);
+    }
+
     const sortByTitle = () => {
-        console.log(titleSortedAscending);
-        console.log("I'm in sortByTitle");
         if (!titleSortedAscending) {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestTitle > b.requestTitle ? 1 : -1);
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
             setTitleSortedAscending(true);
             setRequests(sortedArray);
         } else {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestTitle < b.requestTitle ? 1 : -1);
             setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setTitleSortedAscending(false);
             setRequests(sortedArray);
-
-
         }
-        console.log(titleSortedAscending);
     }
 
 
     const sortByRequestor = () => {
-        console.log("I'm in sortByTitle")
-        const sortedArray = [].concat(requests)
+        console.log(requests[0].requestUsername);
+
+        if (!usernameSortedAscending) {
+            const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestUsername > b.requestUsername ? 1 : -1);
-        setRequests(sortedArray);
-        console.log(sortedArray);
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setUsernameSortedAscending(true);
+            setRequests(sortedArray);
+        } else {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestUsername < b.requestUsername ? 1 : -1);
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setRequests(sortedArray);
+        }
     }
 
 
