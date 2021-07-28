@@ -12,6 +12,8 @@ const RequestList = () => {
     const [showOpen, setShowOpen] = useState(false);
     const [titleSortedAscending, setTitleSortedAscending] = useState();
     const [usernameSortedAscending, setUsernameSortedAscending] = useState();
+    const [prioritySortedAscending, setPrioritySortedAscending] = useState();
+
 
     useEffect(() => {
         console.log("Hello from RequestList.js useEffect");
@@ -29,11 +31,6 @@ const RequestList = () => {
         console.log(e.target.checked);
         setShowOpen(e.target.checked);
 
-    }
-
-    const resetSortVariables = () => {
-        setTitleSortedAscending(false);
-        setUsernameSortedAscending(false);
     }
 
     const sortByTitle = () => {
@@ -56,25 +53,49 @@ const RequestList = () => {
 
 
     const sortByRequestor = () => {
-        console.log(requests[0].requestUsername);
-
         if (!usernameSortedAscending) {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestUsername > b.requestUsername ? 1 : -1);
+            // reset sort variables
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
+
             setUsernameSortedAscending(true);
             setRequests(sortedArray);
         } else {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestUsername < b.requestUsername ? 1 : -1);
+            // reset sort variables
             setTitleSortedAscending(false);
-            setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
+
             setUsernameSortedAscending(false);
             setRequests(sortedArray);
         }
     }
 
+    const sortByPriority = () => {
+        if (!prioritySortedAscending) {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestPriority > b.requestPriority ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+
+            setPrioritySortedAscending(true);
+            setRequests(sortedArray);
+        } else {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestPriority < b.requestPriority ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+
+            setPrioritySortedAscending(false);
+            setRequests(sortedArray);
+        }
+    }
 
 
     if (loading) {
@@ -93,7 +114,7 @@ const RequestList = () => {
                         <tr>
                             <th scope="col-4" className="font-weight-bold lead"><a href="#0" onClick={sortByTitle}>Title</a></th>
                             <th scope="col-2" className="font-weight-bold lead"><a href="#0" onClick={sortByRequestor}>Requestor</a></th>
-                            <th scope="col-2" className="font-weight-bold lead">Priority</th>
+                            <th scope="col-2" className="font-weight-bold lead"><a href="#0" onClick={sortByPriority}>Priority</a></th>
                             <th scope="col-2" className="font-weight-bold lead">Request Date</th>
                             <th scope="col-2" className="font-weight-bold lead">Assigned To</th>
                             <th scope="col-2" className="font-weight-bold lead">Status</th>
