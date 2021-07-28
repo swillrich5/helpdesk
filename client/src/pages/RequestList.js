@@ -10,6 +10,8 @@ const RequestList = () => {
     const [loading, setLoading] = useState(false);
     const [requests, setRequests] = useState([]);
     const [showOpen, setShowOpen] = useState(false);
+    const [titleSortedAscending, setTitleSortedAscending] = useState(false);
+
 
     useEffect(() => {
         console.log("Hello from RequestList.js useEffect");
@@ -30,11 +32,22 @@ const RequestList = () => {
     }
 
     const sortByTitle = () => {
-        console.log("I'm in sortByTitle")
-        const sortedArray = [].concat(requests)
+        console.log(titleSortedAscending);
+        console.log("I'm in sortByTitle");
+        if (!titleSortedAscending) {
+            const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestTitle > b.requestTitle ? 1 : -1);
-        setRequests(sortedArray);
-        console.log(sortedArray);
+            setTitleSortedAscending(true);
+            setRequests(sortedArray);
+        } else {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestTitle < b.requestTitle ? 1 : -1);
+            setTitleSortedAscending(false);
+            setRequests(sortedArray);
+
+
+        }
+        console.log(titleSortedAscending);
     }
 
 
