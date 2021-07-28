@@ -29,6 +29,25 @@ const RequestList = () => {
 
     }
 
+    const sortByTitle = () => {
+        console.log("I'm in sortByTitle")
+        const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestTitle > b.requestTitle ? 1 : -1);
+        setRequests(sortedArray);
+        console.log(sortedArray);
+    }
+
+
+    const sortByRequestor = () => {
+        console.log("I'm in sortByTitle")
+        const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestUsername > b.requestUsername ? 1 : -1);
+        setRequests(sortedArray);
+        console.log(sortedArray);
+    }
+
+
+
     if (loading) {
         return (
             <Spinner />
@@ -43,8 +62,8 @@ const RequestList = () => {
                 <table className="container table table-striped table-dark text-primary">
                     <thead>
                         <tr>
-                            <th scope="col-4" className="font-weight-bold lead">Title</th>
-                            <th scope="col-2" className="font-weight-bold lead">Requestor</th>
+                            <th scope="col-4" className="font-weight-bold lead"><a href="#0" onClick={sortByTitle}>Title</a></th>
+                            <th scope="col-2" className="font-weight-bold lead"><a href="#0" onClick={sortByRequestor}>Requestor</a></th>
                             <th scope="col-2" className="font-weight-bold lead">Priority</th>
                             <th scope="col-2" className="font-weight-bold lead">Request Date</th>
                             <th scope="col-2" className="font-weight-bold lead">Assigned To</th>
