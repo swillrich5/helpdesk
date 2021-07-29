@@ -115,10 +115,10 @@ const handleSubmit = (e) => {
                         <div className="form-group col-xs-5">
                             <label className="lead font-weight-bold" htmlFor="priority" >Priority</label>
                             <select className="form-control" id="priority" name="requestPriority" value={request.requestPriority} onChange={(e) => priorityChange(e)} >
-                                <option>High</option>
-                                <option>Medium</option>
-                                <option>Low </option>
-                                <option>When you can get to it</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low </option>
+                                <option value="4">When you can get to it</option>
                             </select>
                         </div>
                         <div className="form-group col-xs-5 ml-3">
