@@ -127,7 +127,10 @@ const RequestList = () => {
                                     <tr key={ request._id }>
                                             <td><Link to={`/editRequest/${request._id}`} className="requestTitle">{ request.requestTitle }</Link></td>
                                             <td>{ request.requestUsername }</td>
-                                            <td>{ request.requestPriority }</td>
+                                            {(request.requestPriority === "1") && <td>High</td>}
+                                            {(request.requestPriority === "2") && <td>Medium</td>}
+                                            {(request.requestPriority === "3") && <td>Low</td>}
+                                            {(request.requestPriority === "4") && <td>When you can get to it</td>}
                                             <td>{moment(request.requestDate).format('MM-DD-YYYY h:mma')}</td>
                                             <td>{request.assignedTo}</td>
                                             <td>{(request.resolved === true) ? <span>Closed</span> : <span>Open</span>}</td>
