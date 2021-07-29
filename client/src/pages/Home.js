@@ -22,6 +22,10 @@ const Home = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (priority === "") {
+            setPriority("1");
+        }
+
         API.saveRequest({
             requestTitle: requestTitle,
             requestDescription: description,
