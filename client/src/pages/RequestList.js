@@ -13,6 +13,7 @@ const RequestList = () => {
     const [titleSortedAscending, setTitleSortedAscending] = useState();
     const [usernameSortedAscending, setUsernameSortedAscending] = useState();
     const [prioritySortedAscending, setPrioritySortedAscending] = useState();
+    const [requestDateSortedAscending, setRequestDateSortedAscending] = useState();
 
 
     useEffect(() => {
@@ -37,15 +38,21 @@ const RequestList = () => {
         if (!titleSortedAscending) {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestTitle > b.requestTitle ? 1 : -1);
+            // reset sort variables
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
+            setRequestDateSortedAscending(false);
+
             setTitleSortedAscending(true);
             setRequests(sortedArray);
         } else {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestTitle < b.requestTitle ? 1 : -1);
+            // reset sort variables
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
+            setRequestDateSortedAscending(false);
+
             setTitleSortedAscending(false);
             setRequests(sortedArray);
         }
@@ -60,6 +67,7 @@ const RequestList = () => {
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
             setPrioritySortedAscending(false);
+            setRequestDateSortedAscending(false);
 
             setUsernameSortedAscending(true);
             setRequests(sortedArray);
@@ -69,6 +77,7 @@ const RequestList = () => {
             // reset sort variables
             setTitleSortedAscending(false);
             setPrioritySortedAscending(false);
+            setRequestDateSortedAscending(false);
 
             setUsernameSortedAscending(false);
             setRequests(sortedArray);
@@ -82,6 +91,7 @@ const RequestList = () => {
             // reset sort variables
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
+            setRequestDateSortedAscending(false);
 
             setPrioritySortedAscending(true);
             setRequests(sortedArray);
@@ -91,8 +101,33 @@ const RequestList = () => {
             // reset sort variables
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
+            setRequestDateSortedAscending(false);
 
             setPrioritySortedAscending(false);
+            setRequests(sortedArray);
+        }
+    }
+
+    const sortByRequestDate = () => {
+        if (!requestDateSortedAscending) {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestDate > b.requestDate ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setPrioritySortedAscending(true);
+
+            setRequestDateSortedAscending(true);
+            setRequests(sortedArray);
+        } else {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.requestDate < b.requestDate ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
+
+            setRequestDateSortedAscending(false);
             setRequests(sortedArray);
         }
     }
@@ -115,7 +150,7 @@ const RequestList = () => {
                             <th scope="col-4" className="font-weight-bold lead"><a href="#0" onClick={sortByTitle}>Title</a></th>
                             <th scope="col-2" className="font-weight-bold lead"><a href="#0" onClick={sortByRequestor}>Requestor</a></th>
                             <th scope="col-2" className="font-weight-bold lead"><a href="#0" onClick={sortByPriority}>Priority</a></th>
-                            <th scope="col-2" className="font-weight-bold lead">Request Date</th>
+                            <th scope="col-2" className="font-weight-bold lead" ><a href="#0" onClick={sortByRequestDate}>Request Date</a></th>
                             <th scope="col-2" className="font-weight-bold lead">Assigned To</th>
                             <th scope="col-2" className="font-weight-bold lead">Status</th>
                         </tr>
