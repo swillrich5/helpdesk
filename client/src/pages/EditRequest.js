@@ -42,7 +42,28 @@ const handleSubmit = (e) => {
     }, 3000 );
     return () => clearTimeout(timer);
 
-    }
+}
+
+const handleDelete = (e) => {
+    e.preventDefault();
+
+    API.deleteRequest(request._id)
+    .then(res => {
+        console.log("Request Deleted");
+        console.log("Request ====>");
+        console.log(request);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+    setMessageOne("Your request has been deleted");
+    const timer = setTimeout(() => {
+        setMessageOne("");
+    }, 3000 );
+    return () => clearTimeout(timer);
+
+}
 
     function requestTitleChange (e) {
         console.log(e.target.value);
@@ -144,6 +165,7 @@ const handleSubmit = (e) => {
                     </div>
                     <div className="row ml-1">
                         <button type="submit" className="btn btn-primary btn-lg px-5 font-weight-bold">Update</button>
+                        <button onClick={handleDelete} className="btn btn-danger btn-lg px-5 ml-3 font-weight-bold">Delete</button>
                         { (messageOne.length > 0) && <p className="lead ml-5">{messageOne}</p> }
                     </div>
                 </form>
