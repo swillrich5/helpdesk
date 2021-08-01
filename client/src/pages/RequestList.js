@@ -14,6 +14,7 @@ const RequestList = () => {
     const [usernameSortedAscending, setUsernameSortedAscending] = useState();
     const [prioritySortedAscending, setPrioritySortedAscending] = useState();
     const [requestDateSortedAscending, setRequestDateSortedAscending] = useState();
+    const [assignedToSortedAscending, setAssignedToSortedAscending] = useState();
 
 
     useEffect(() => {
@@ -133,6 +134,33 @@ const RequestList = () => {
     }
 
 
+    const sortByAssignedTo = () => {
+        if (!assignedToSortedAscending) {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.assignedTo > b.assignedTo ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
+            setRequestDateSortedAscending(false);
+
+            setAssignedToSortedAscending(true);
+            setRequests(sortedArray);
+        } else {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.assignedTo < b.assignedTo ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
+            setRequestDateSortedAscending(false);
+
+            setAssignedToSortedAscending(true);
+            setRequests(sortedArray);
+        }
+    }
+
+
     if (loading) {
         return (
             <Spinner />
@@ -151,7 +179,7 @@ const RequestList = () => {
                             <th scope="col-2" className="font-weight-bold lead"><a href="#0" className="request-list-title" onClick={sortByRequestor}>Requestor</a></th>
                             <th scope="col-2" className="font-weight-bold lead"><a href="#0" className="request-list-title" onClick={sortByPriority}>Priority</a></th>
                             <th scope="col-2" className="font-weight-bold lead" ><a href="#0" className="request-list-title" onClick={sortByRequestDate}>Request Date</a></th>
-                            <th scope="col-2" className="font-weight-bold lead">Assigned To</th>
+                            <th scope="col-2" className="font-weight-bold lead" ><a href="#0" className="request-list-title" onClick={sortByAssignedTo}>Assigned To</a></th>
                             <th scope="col-2" className="font-weight-bold lead">Status</th>
                         </tr>
                     </thead>
