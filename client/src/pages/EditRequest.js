@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Heading from '../components/Heading';
+import { useHistory } from 'react-router-dom'
 import API from '../utils/API';
 
 const EditRequest = ({ match }) => {
 
     console.log("Match = ");
     console.log(match.params.id);
+
+    const history = useHistory();
 
     const [loading, setLoading] = useState(false);
     const [request, setRequest] = useState({});
@@ -45,6 +48,7 @@ const handleSubmit = (e) => {
 }
 
 const handleDelete = (e) => {
+
     e.preventDefault();
 
     API.deleteRequest(request._id)
@@ -60,7 +64,8 @@ const handleDelete = (e) => {
     setMessageOne("Your request has been deleted");
     const timer = setTimeout(() => {
         setMessageOne("");
-    }, 3000 );
+       history.push('/requestlist');
+    }, 2000 );
     return () => clearTimeout(timer);
 
 }
