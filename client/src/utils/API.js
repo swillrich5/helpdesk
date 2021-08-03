@@ -16,8 +16,6 @@ export default {
   },
   // Saves a request to the database
   saveRequest: function(requestData) {
-    console.log("I'm in API.js - saveRequest()");
-    console.log(requestData);
     return axios.post("/api/requests", requestData);
   },
     // Updates a request to the database

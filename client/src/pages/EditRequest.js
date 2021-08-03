@@ -5,9 +5,6 @@ import API from '../utils/API';
 
 const EditRequest = ({ match }) => {
 
-    console.log("Match = ");
-    console.log(match.params.id);
-
     const history = useHistory();
 
     const [loading, setLoading] = useState(false);
@@ -15,63 +12,56 @@ const EditRequest = ({ match }) => {
     const [messageOne, setMessageOne] = useState("");
 
     useEffect(() => {
-        console.log("Hello from RequestList.js useEffect");
         setLoading(true);
         API.getRequest(match.params.id) 
             .then(res => {
-                console.log(res.data);
                 setRequest(res.data);
                 setLoading(false);
             })
             .catch(err => console.log(err));
-}, [match]);
+    }, [match]);
 
-const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    API.updateRequest(request._id, request)
-    .then(res => {
-        console.log("Request Updated");
-        console.log("Request ====>");
-        console.log(request);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+        API.updateRequest(request._id, request)
+        .then(res => {
+            console.log(request);
+        })
+        .catch(err => {
+            console.log(err);
+        });
 
-    setMessageOne("Your request has been updated");
-    const timer = setTimeout(() => {
-        setMessageOne("");
-    }, 3000 );
-    return () => clearTimeout(timer);
+        setMessageOne("Your request has been updated");
+        const timer = setTimeout(() => {
+            setMessageOne("");
+        }, 3000 );
+        return () => clearTimeout(timer);
 
-}
+    }
 
-const handleDelete = (e) => {
+    const handleDelete = (e) => {
+            
+        e.preventDefault();
 
-    e.preventDefault();
+        API.deleteRequest(request._id)
+        .then(res => {
+            console.log(request);
+        })
+        .catch(err => {
+            console.log(err);
+        });
 
-    API.deleteRequest(request._id)
-    .then(res => {
-        console.log("Request Deleted");
-        console.log("Request ====>");
-        console.log(request);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+        setMessageOne("Your request has been deleted");
+        const timer = setTimeout(() => {
+            setMessageOne("");
+            history.push('/requestlist');
+        }, 2000 );
+        return () => clearTimeout(timer);
+    }
 
-    setMessageOne("Your request has been deleted");
-    const timer = setTimeout(() => {
-        setMessageOne("");
-       history.push('/requestlist');
-    }, 2000 );
-    return () => clearTimeout(timer);
-
-}
 
     function requestTitleChange (e) {
-        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
             requestTitle: e.target.value
@@ -79,7 +69,6 @@ const handleDelete = (e) => {
     }
 
     function usernameChange (e) {
-        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
             requestUsername: e.target.value
@@ -87,7 +76,6 @@ const handleDelete = (e) => {
     }
 
     function priorityChange (e) {
-        console.log(e.target);
         setRequest(prevState => ({
             ...prevState,
             requestPriority: e.target.value
@@ -95,7 +83,6 @@ const handleDelete = (e) => {
     }
 
     function descriptionChange (e) {
-        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
             requestDescription: e.target.value
@@ -103,14 +90,12 @@ const handleDelete = (e) => {
     }
 
     function assignedToChange (e) {
-        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
             assignedTo: e.target.value
         }))
     }
     function statusChange (e) {
-        console.log(e.target.value);
         setRequest(prevState => ({
             ...prevState,
             resolved: e.target.value

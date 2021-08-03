@@ -18,11 +18,9 @@ const RequestList = () => {
 
 
     useEffect(() => {
-        console.log("Hello from RequestList.js useEffect");
         setLoading(true);
         API.getRequests() 
             .then(res => {
-                console.log(res.data);
                 setRequests(res.data);
                 setLoading(false);
             })
@@ -30,9 +28,7 @@ const RequestList = () => {
 }, []);
 
     const onlyOpenRequestsChange = (e) => {
-        console.log(e.target.checked);
         setShowOpen(e.target.checked);
-
     }
 
     const sortByTitle = () => {

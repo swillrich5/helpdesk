@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const requestsController = require("../../controllers/requestsController");
 
-
-// console.log("I'm in requests.js");
-
 // Matches with "/api/requests"
 router.route("/")
   .get(requestsController.findAll)
