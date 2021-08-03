@@ -15,6 +15,7 @@ const RequestList = () => {
     const [prioritySortedAscending, setPrioritySortedAscending] = useState();
     const [requestDateSortedAscending, setRequestDateSortedAscending] = useState();
     const [assignedToSortedAscending, setAssignedToSortedAscending] = useState();
+    const [statusSortedAscending, setStatusSortedAscending] = useState();
 
 
     useEffect(() => {
@@ -36,9 +37,11 @@ const RequestList = () => {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestTitle > b.requestTitle ? 1 : -1);
             // reset sort variables
-            setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
             setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setTitleSortedAscending(true);
             setRequests(sortedArray);
@@ -46,9 +49,11 @@ const RequestList = () => {
             const sortedArray = [].concat(requests)
             .sort((a,b) => a.requestTitle < b.requestTitle ? 1 : -1);
             // reset sort variables
-            setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
             setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setTitleSortedAscending(false);
             setRequests(sortedArray);
@@ -62,9 +67,10 @@ const RequestList = () => {
             .sort((a,b) => a.requestUsername > b.requestUsername ? 1 : -1);
             // reset sort variables
             setTitleSortedAscending(false);
-            setUsernameSortedAscending(false);
             setPrioritySortedAscending(false);
             setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setUsernameSortedAscending(true);
             setRequests(sortedArray);
@@ -75,6 +81,8 @@ const RequestList = () => {
             setTitleSortedAscending(false);
             setPrioritySortedAscending(false);
             setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setUsernameSortedAscending(false);
             setRequests(sortedArray);
@@ -89,6 +97,8 @@ const RequestList = () => {
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
             setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setPrioritySortedAscending(true);
             setRequests(sortedArray);
@@ -99,6 +109,8 @@ const RequestList = () => {
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
             setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setPrioritySortedAscending(false);
             setRequests(sortedArray);
@@ -113,6 +125,8 @@ const RequestList = () => {
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
             setPrioritySortedAscending(true);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setRequestDateSortedAscending(true);
             setRequests(sortedArray);
@@ -122,7 +136,9 @@ const RequestList = () => {
             // reset sort variables
             setTitleSortedAscending(false);
             setUsernameSortedAscending(false);
-            setPrioritySortedAscending(false);
+            setPrioritySortedAscending(true);
+            setAssignedToSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setRequestDateSortedAscending(false);
             setRequests(sortedArray);
@@ -139,6 +155,7 @@ const RequestList = () => {
             setUsernameSortedAscending(false);
             setPrioritySortedAscending(false);
             setRequestDateSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setAssignedToSortedAscending(true);
             setRequests(sortedArray);
@@ -150,11 +167,42 @@ const RequestList = () => {
             setUsernameSortedAscending(false);
             setPrioritySortedAscending(false);
             setRequestDateSortedAscending(false);
+            setStatusSortedAscending(false);
 
             setAssignedToSortedAscending(true);
             setRequests(sortedArray);
         }
     }
+
+
+    const sortByStatus = () => {
+        if (!statusSortedAscending) {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.resolved > b.resolved ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
+            setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+
+            setStatusSortedAscending(true);
+            setRequests(sortedArray);
+        } else {
+            const sortedArray = [].concat(requests)
+            .sort((a,b) => a.assignedTo < b.assignedTo ? 1 : -1);
+            // reset sort variables
+            setTitleSortedAscending(false);
+            setUsernameSortedAscending(false);
+            setPrioritySortedAscending(false);
+            setRequestDateSortedAscending(false);
+            setAssignedToSortedAscending(false);
+
+            setStatusSortedAscending(false);
+            setRequests(sortedArray);
+        }
+    }
+
 
 
     if (loading) {
@@ -176,7 +224,7 @@ const RequestList = () => {
                             <th scope="col-2" className="font-weight-bold lead"><a href="#0" className="request-list-title" onClick={sortByPriority}>Priority</a></th>
                             <th scope="col-2" className="font-weight-bold lead" ><a href="#0" className="request-list-title" onClick={sortByRequestDate}>Request Date</a></th>
                             <th scope="col-2" className="font-weight-bold lead" ><a href="#0" className="request-list-title" onClick={sortByAssignedTo}>Assigned To</a></th>
-                            <th scope="col-2" className="font-weight-bold lead">Status</th>
+                            <th scope="col-2" className="font-weight-bold lead" ><a href="#0" className="request-list-title" onClick={sortByStatus}>Status</a></th>
                         </tr>
                     </thead>
                     <tbody>
