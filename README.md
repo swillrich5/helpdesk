@@ -71,9 +71,12 @@ The following technology was used to build helpdesk:
 
 ---
 
-## Application-Image
+## Application-Images
 
-![Image of Deployed Application](./src/images/marvel-mania.png)
+![Image of Deployed Application](./client/src/images/helpdesk.png)
+
+
+![Image of Deployed Application](./client/src/images/helpdesk2.png)
 
 ---
 
