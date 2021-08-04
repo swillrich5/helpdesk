@@ -1,5 +1,7 @@
 # helpdesk
 
+![Image of Deployed Application](./client/src/images/helpdesk-logo.png)
+
 helpdesk is a simple helpdesk application written using the MERN stack.  I'm using it to better understand the MERN stack and most of all, improve my React coding skills.
 
 ## Deployed Application
