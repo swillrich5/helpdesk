@@ -51,13 +51,22 @@ from the command line.
 
 ## Technology
 
-The following technology was used to build note-taker:
+The following technology was used to build helpdesk:
 
-  * node - https://nodejs.org/en/
+  * [BootStrap v4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 
-  * react - https://www.npmjs.com/package/react
+   * [express.js](https://www.npmjs.com/package/express)
 
-  * Bootstrap v4.6 - https://getbootstrap.com/docs/4.6/getting-started/introduction/
+  * [Firebase](https://firebase.google.com/)
+
+  * [MongoDB](https://www.mongodb.com/)
+
+  * [Mongoose](https://www.npmjs.com/package/mongoose)
+
+  * [node.js](https://nodejs.org/en/)
+
+  * [react.js](https://www.npmjs.com/package/react)
+
 
 
 ---
